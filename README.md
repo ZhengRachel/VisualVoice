@@ -123,10 +123,16 @@ wget http://dl.fbaipublicfiles.com/VisualVoice/cross-modal-pretraining/vocal.pth
 2. Use the following command to train the VisualVoice speech separation model:
 ```
 python train.py \
+--data_path hdf5/VoxCeleb2/ \
 --name exp \
 --gpu_ids 0,1,2,3,4,5,6,7 \
 --batchSize 128 \
 --nThreads 32 \
+--num_frames 64 \
+--audio_length 2.55 \
+--hop_size 160 \
+--window_size 400 \
+--n_fft 512 \
 --display_freq 10 \
 --save_latest_freq 500 \
 --niter 1 \
@@ -142,11 +148,6 @@ python train.py \
 --lr_facial_attributes 0.00001 \
 --lr_unet 0.0001 \
 --lr_vocal_attributes 0.00001 \
---num_frames 64 \
---audio_length 2.55 \
---hop_size 160 \
---window_size 400 \
---n_fft 512 \
 --margin 0.5 \
 --weighted_loss \
 --visual_pool maxpool \
@@ -167,7 +168,6 @@ python train.py \
 --weights_facial ./pretrained_models/cross-modal-pretraining/facial.pth \
 --weights_vocal ./pretrained_models/cross-modal-pretraining/vocal.pth \
 --lipreading_config_path configs/lrw_snv1x_tcn2x.json \
---data_path hdf5/VoxCeleb2/ \
 |& tee logs.txt
 ```
 

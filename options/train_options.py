@@ -27,6 +27,7 @@ class TrainOptions(BaseOptions):
 		#model arguments
 		self.parser.add_argument('--visual_pool', type=str, default='maxpool', help='avg or max pool for visual stream feature')
 		self.parser.add_argument('--audio_pool', type=str, default='maxpool', help="avg or max pool for audio stream feature")
+		# use to load pre-trained model
 		self.parser.add_argument('--weights_facial', type=str, default='', help="weights for facial attributes net")
 		self.parser.add_argument('--weights_unet', type=str, default='', help="weights for unet")
 		self.parser.add_argument('--weights_vocal', type=str, default='', help="weights for vocal attributes net")

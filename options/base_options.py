@@ -18,12 +18,12 @@ class BaseOptions():
 
 	def initialize(self):
 		self.parser.add_argument('--data_path', default='/private/home/rhgao/datasets/VoxCeleb2/', help='path to dataset')
-		self.parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
-		self.parser.add_argument('--name', type=str, default='audioVisual', help='name of the experiment. It decides where to store models')
-		self.parser.add_argument('--checkpoints_dir', type=str, default='checkpoints/', help='models are saved here')
+		self.parser.add_argument('--gpu_ids', type=str, default='0,1,2', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
+		self.parser.add_argument('--name', type=str, default='alt-se', help='name of the experiment. It decides where to store models')
+		self.parser.add_argument('--checkpoints_dir', type=str, default='../alt-se/checkpoints/', help='models are saved here')
 		self.parser.add_argument('--model', type=str, default='audioVisual', help='chooses how datasets are loaded.')
-		self.parser.add_argument('--batchSize', type=int, default=32, help='input batch size')
-		self.parser.add_argument('--nThreads', default=16, type=int, help='# threads for loading data')
+		self.parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
+		self.parser.add_argument('--nThreads', default=32, type=int, help='# threads for loading data')
 		self.parser.add_argument('--seed', default=0, type=int, help='random seed')
 
 		# arguments
