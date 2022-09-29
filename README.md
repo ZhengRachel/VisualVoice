@@ -124,50 +124,50 @@ wget http://dl.fbaipublicfiles.com/VisualVoice/cross-modal-pretraining/vocal.pth
 ```
 python train.py \
 --data_path hdf5/VoxCeleb2/ \
---name exp \
 --gpu_ids 0,1,2,3,4,5,6,7 \
+--name exp \
 --batchSize 128 \
 --nThreads 32 \
 --num_frames 64 \
 --audio_length 2.55 \
---hop_size 160 \
 --window_size 400 \
+--hop_size 160 \
 --n_fft 512 \
 --display_freq 10 \
 --save_latest_freq 500 \
+--tensorboard True \
 --niter 1 \
+--num_batch 50000 \
 --validation_on True \
 --validation_freq 200 \
 --validation_batches 30 \
---num_batch 50000 \
---lr_steps 30000 40000 \
+--visual_pool maxpool \
+--audio_pool maxpool \
+--weights_facial ./pretrained_models/cross-modal-pretraining/facial.pth \
+--weights_vocal ./pretrained_models/cross-modal-pretraining/vocal.pth \
+--unet_input_nc 2 \
+--unet_output_nc 2 \
 --coseparation_loss_weight 0.01 \
 --mixandseparate_loss_weight 1 \
 --crossmodal_loss_weight 0.01 \
+--mask_loss_type L2 \
+--weighted_loss \
+--lipreading_config_path configs/lrw_snv1x_tcn2x.json \
+--audioVisual_feature_dim 1152 \
+--identity_feature_dim 128 \
+--visual_feature_type both \
+--lipreading_extract_feature \
+--compression_type none \
+--mask_clip_threshold 5 \
+--normalization \
+--audio_normalization \
 --lr_lipreading 0.0001 \
 --lr_facial_attributes 0.00001 \
 --lr_unet 0.0001 \
 --lr_vocal_attributes 0.00001 \
---margin 0.5 \
---weighted_loss \
---visual_pool maxpool \
---audio_pool maxpool \
+--lr_steps 30000 40000 \
 --optimizer adam \
---normalization \
---tensorboard True \
---mask_loss_type L2 \
---visual_feature_type both \
---unet_input_nc 2 \
---unet_output_nc 2 \
---compression_type none \
---mask_clip_threshold 5 \
---audioVisual_feature_dim 1152 \
---identity_feature_dim 128 \
---audio_normalization \
---lipreading_extract_feature \
---weights_facial ./pretrained_models/cross-modal-pretraining/facial.pth \
---weights_vocal ./pretrained_models/cross-modal-pretraining/vocal.pth \
---lipreading_config_path configs/lrw_snv1x_tcn2x.json \
+--margin 0.5 \
 |& tee logs.txt
 ```
 

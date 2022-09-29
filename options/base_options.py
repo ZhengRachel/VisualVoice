@@ -30,7 +30,7 @@ class BaseOptions():
 		self.parser.add_argument('--num_frames', default=64, type=int, help='number of frames used for lipreading')
 		self.parser.add_argument('--video_sampling_rate', default=1, type=int, help='sample video frames every N frames')				
 		self.parser.add_argument('--audio_length', default=2.55, type=float, help='audio segment length')
-		self.parser.add_argument('--audio_sampling_rate', default=16000, type=int, help='sound sampling rate')
+		self.parser.add_argument('--audio_sampling_rate', default=16000, type=int, help='sound sampling rate') # audio: 100fps
 		self.parser.add_argument('--window_size', default=400, type=int, help="stft window length")
 		self.parser.add_argument('--hop_size', default=160, type=int, help="stft hop length")
 		self.parser.add_argument('--n_fft', default=512, type=int, help="stft hop length")
